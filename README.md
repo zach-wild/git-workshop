@@ -17,7 +17,7 @@ Github is a service for hosting git repositories. Sign up for an account if you 
 ### Forking the Original Project
 We are going to fork the original project on Github. The project that we'll be working with is a simple website. Forking allows you to create a copy of a repository and make changes to it without affecting the original project. Now that we are logged into Github, go to the original project at https://github.com/zach-wild/git-workshop.
 
-### Cloning this repository
+### Downloading this repository
 First make a new directory to initialize your git project in.
 ```sh
 $ mkdir git-workshop
@@ -32,9 +32,15 @@ Now that we have referenced our newly created repository we can download it do o
 ```sh
 $ git fetch origin
 ```
-
-
-Now we have a local copy of this repository that we can make changes to.
+Now that we have all of the changes we want to incorporate them into our local git repository. The merge command joins the git history of two branches, we'll talk more about branches later. In our case this will be the origin/master branch we fetched and the master (default) branch that was created when we ran git init.
+```sh
+$ git merge origin/master
+```
+Now we have a local copy of this repository that we can make changes to. There is also an easier way to do all of this which is to instead clone a repository.
+```sh
+$ git clone https://github.com/<your-username>/git-workshop.git
+```
+This will perform all of the steps we just did with one command. But now lets makes some changes to the project. 
 
 ### Making some changes to the website
 The whole point of git is to keep track of the changes made to a project. We'll run a quick command to look at the history of changes made to this project.
@@ -67,7 +73,27 @@ to
   <h1>That was a great joke.</h1>
 </body>
 ```
-Now that we've made whatever changes we want to save these changes. 
+Now that we've made whatever changes we want to save these changes. If we run the status command we can get an idea of what has changed about the project since the last commit.
+```sh
+$ git status
+```
+We'll see files that have been changed and it also mentions that no changed have been added to commit. We can add changed to commit with the add command. 
+```sh
+$ git add jokes.html
+```
+Now if we run git status again we'll see that it says that we have modified the jokes.html file and that this change is ready to be committed. So now we are going to create a commit. 
+```sh
+$ git commit -m 'Included better jokes'
+```
+Now if we check our git history we will see that our newest commit is included.
+```sh
+$ git log --stat
+```
+Now that we have made some changes to our project we would like to sync up our local and remote repositories. We are going to push the changes we made, the commit, to our remote repository. Remember that we created a reference to our remote repository with the origin remote. Similar to how we donwloaded from this remote we can upload to it.
+```sh
+$ git push origin master
+```
+We should recieve a permission denied error.
 
 ### Configuration
 We are going to follow this tutorial to configure git to work with your github account. (https://kbroman.org/github_tutorial/pages/first_time.html)
