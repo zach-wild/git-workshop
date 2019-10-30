@@ -21,3 +21,4 @@ Cloning a repository downloads it so that you have a local copy to work with.
 ```sh
 $ git clone https://github.com/zach-wild/git-workshop.git
 ```
+make betteer
